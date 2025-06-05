@@ -1,46 +1,88 @@
-# Getting Started with Create React App
+# カウンターアプリケーション
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+React + TypeScript で実装したシンプルなカウンターアプリケーションです。
 
-## Available Scripts
+## 機能
 
-In the project directory, you can run:
+- カウント値の表示
+- プラスボタンでカウントアップ
+- マイナスボタンでカウントダウン
 
-### `npm start`
+## 技術スタック
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- React 18
+- TypeScript
+- Create React App
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## プロジェクト構造
 
-### `npm test`
+```
+src/
+├── components/
+│   ├── Button.tsx    # 再利用可能なボタンコンポーネント
+│   └── Counter.tsx   # カウンター機能を持つコンポーネント
+├── App.tsx           # アプリケーションのルートコンポーネント
+└── App.css          # スタイリング
+```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## 実装の詳細
 
-### `npm run build`
+### Button.tsx
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+再利用可能なボタンコンポーネントです。
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```typescript
+interface ButtonProps {
+  label: string; // ボタンに表示するテキスト
+  onClick: () => void; // クリック時のコールバック関数
+}
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- TypeScript で props の型を定義
+- 関数コンポーネントとして実装
+- スタイリングはインラインスタイルで実装
 
-### `npm run eject`
+### Counter.tsx
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+カウンター機能を実装したコンポーネントです。
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- `useState`フックを使用して状態管理
+- カウントアップ/ダウン機能の実装
+- `Button`コンポーネントの再利用
+- 中央寄せなどの基本的なスタイリング
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+## 起動方法
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+1. 依存パッケージのインストール
 
-## Learn More
+```bash
+npm install
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+2. 開発サーバーの起動
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+```bash
+npm start
+```
+
+3. ブラウザで以下の URL にアクセス
+
+```
+http://localhost:3000
+```
+
+## 学習ポイント
+
+- 関数コンポーネントの基本的な実装方法
+- TypeScript での props 型定義
+- コンポーネントの再利用
+- React の状態管理（useState）
+- JSX の基本的な書き方
+
+## 今後の改善案
+
+- スタイリングの改善（CSS Modules or Styled Components の導入）
+- テストコードの追加
+- カウントの最大値/最小値の設定
+- リセット機能の追加
+- アニメーションの追加
